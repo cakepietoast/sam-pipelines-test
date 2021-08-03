@@ -35,7 +35,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-          # trigger the tests here
+          pip install pytest pytest-mock
+          pytest tests/unit
 
   build-and-deploy-feature:
     # this stage is triggered only for feature branches (feature*),
