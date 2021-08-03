@@ -71,3 +71,14 @@ def test_lambda_handler(apigw_event, mocker):
     assert "message" in ret["body"]
     assert data["message"] == "hello world"
     # assert "location" in data.dict_keys()
+
+
+def test_lambda_handler_new_key(apigw_event, mocker):
+
+    ret = app.lambda_handler(apigw_event, "")
+    data = json.loads(ret["body"])
+
+    assert ret["statusCode"] == 200
+    assert "new_key" in ret["body"]
+    assert data["new_key"] == "new_value"
+    # assert "location" in data.dict_keys()
